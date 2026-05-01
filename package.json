@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://surya6968.github.io/<repo-name>",
+  "homepage": "https://shravangv.github.io/Surya_portfolio1",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
