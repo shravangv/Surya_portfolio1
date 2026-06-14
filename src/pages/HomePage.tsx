@@ -7,19 +7,17 @@ import { projects } from './WorkPage';
 
 // Pick first 3 producer projects as featured
 const featuredProjects = projects.filter((p) => p.role === 'producer').slice(0, 3);
-
+// Updated brands array with image URLs (Replace placeholders with your real asset paths)
 const brands = [
-  'Big Basket',
-  'Britannia',
-  'Flipkart',
-  'Xiaomi',
-  'First Club',
-  'Razorpay',
-  'Kingfisher',
-  'Panasonic',
-  'iD',
-  'Boat',
-  'Farmley',
+  { name: 'Big Basket', logoUrl: '/assets/logos/bigbasket.png' },
+  { name: 'Britannia', logoUrl: '/assets/logos/britannia.png' },
+  { name: 'Flipkart', logoUrl: '/assets/logos/flipkart.png' },
+  { name: 'Xiaomi', logoUrl: '/assets/logos/mi.png' },
+  { name: 'First Club', logoUrl: '/assets/logos/firstclub.png' },
+  { name: 'Razorpay', logoUrl: '/assets/logos/razorpay.png' },
+  { name: 'BFC', logoUrl: '/assets/logos/bfc.png' },
+  { name: 'Panasonic', logoUrl: '/assets/logos/panasonic.png' },
+  { name: 'iD', logoUrl: '/assets/logos/id.png' },
 ];
 
 // Duplicate for seamless infinite scroll
@@ -46,7 +44,7 @@ const HomePage: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-4xl md:text-7xl font-extrabold tracking-tighter mb-4"
+            className="text-4xl md:text-7xl font-['Keep Calm'] font-extrabold tracking-wide mb-4"
           >
             Hi, I'm Surya!
           </motion.h1>
@@ -83,13 +81,11 @@ const HomePage: React.FC = () => {
               transition={{ duration: 0.7 }}
             >
               <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-neutral-800">
-                {/* Replace the src below with your actual photo */}
                 <img
                   src="https://placehold.co/600x750/1a1a1a/555555/png?text=Surya+Kumar"
                   alt="Surya Kumar"
                   className="w-full h-full object-cover"
                 />
-                {/* Subtle accent border */}
                 <div className="absolute inset-0 rounded-2xl ring-1 ring-white/10 pointer-events-none" />
               </div>
             </motion.div>
@@ -147,14 +143,26 @@ const HomePage: React.FC = () => {
           <div className="pointer-events-none absolute left-0 top-0 h-full w-24 z-10 bg-gradient-to-r from-neutral-950 to-transparent" />
           <div className="pointer-events-none absolute right-0 top-0 h-full w-24 z-10 bg-gradient-to-l from-neutral-950 to-transparent" />
 
-          <div className="flex marquee-track">
+          <div className="flex items-center marquee-track">
             {marqueeItems.map((brand, i) => (
-              <span
+              <div
                 key={i}
-                className="flex-shrink-0 mx-10 text-neutral-400 text-xl md:text-2xl font-semibold tracking-wide whitespace-nowrap select-none hover:text-white transition-colors duration-200"
+                className="flex-shrink-0 mx-10 flex items-center justify-center select-none opacity-60 hover:opacity-100 transition-opacity duration-200"
               >
-                {brand}
-              </span>
+                <img
+                  src={brand.logoUrl}
+                  alt={`${brand.name} logo`}
+                  className="h-10 md:h-14 w-auto object-contain max-w-[160px]"
+                  onError={(e) => {
+                    // Fallback to text if the image logo doesn't exist or fails to load
+                    const target = e.target as HTMLImageElement;
+                    const parent = target.parentElement;
+                    if (parent) {
+                      parent.innerHTML = `<span class="text-neutral-400 text-xl md:text-2xl font-semibold tracking-wide whitespace-nowrap">${brand.name}</span>`;
+                    }
+                  }}
+                />
+              </div>
             ))}
           </div>
         </div>

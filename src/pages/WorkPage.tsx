@@ -386,7 +386,10 @@ const WorkPage: React.FC = () => {
   return (
     <PageWrapper>
       <div className="container mx-auto px-4 py-24 md:py-32">
-        <h1 className="text-4xl md:text-6xl font-bold text-center mb-10">My Work</h1>
+        {/* Main Title - Styled in Premium Akira Display */}
+        <h1 className="text-3xl md:text-5xl font-black text-center mb-10 tracking-wider font-['Akira'] uppercase">
+          My Work
+        </h1>
 
         {/* Filter Tabs */}
         <div className="flex justify-center gap-3 mb-12">
@@ -400,11 +403,11 @@ const WorkPage: React.FC = () => {
                   : 'bg-transparent text-neutral-400 border-neutral-700 hover:border-neutral-400 hover:text-white'
                 }`}
             >
-              {f.label}
+              <span className="relative z-10">{f.label}</span>
               {active === f.value && (
                 <motion.span
                   layoutId="filter-pill"
-                  className="absolute inset-0 rounded-full bg-white -z-10"
+                  className="absolute inset-0 rounded-full bg-white z-0"
                   transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                 />
               )}
@@ -425,10 +428,10 @@ const WorkPage: React.FC = () => {
                 transition={{ duration: 0.3, delay: index * 0.04 }}
               >
                 <Link to={`/work/${project.id}`}>
-                  <div className="relative overflow-hidden rounded-lg group cursor-pointer">
+                  <div className="relative overflow-hidden rounded-xl bg-[#121212] border border-neutral-800/40 group cursor-pointer">
 
-                    {/* YouTube Thumbnail */}
-                    <div className="relative w-full aspect-video bg-black">
+                    {/* Thumbnail Frame - Clean & Badge Free */}
+                    <div className="relative w-full aspect-video bg-black rounded-t-xl overflow-hidden">
                       <img
                         src={`https://img.youtube.com/vi/${project.youtubeId}/maxresdefault.jpg`}
                         alt={project.title}
@@ -441,47 +444,53 @@ const WorkPage: React.FC = () => {
                       {/* Dark overlay on hover */}
                       <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                      {/* Play Button */}
+                      {/* Clean Center Play Button */}
                       <div className="absolute inset-0 flex items-center justify-center">
                         <motion.div
-                          className="w-16 h-16 rounded-full bg-white bg-opacity-90 flex items-center justify-center shadow-2xl"
-                          initial={{ scale: 0.85, opacity: 0.7 }}
-                          whileHover={{ scale: 1.1, opacity: 1 }}
+                          className="w-14 h-14 rounded-full bg-white bg-opacity-90 flex items-center justify-center shadow-2xl"
+                          initial={{ scale: 0.85, opacity: 0.8 }}
+                          whileHover={{ scale: 1.05, opacity: 1 }}
                           transition={{ type: 'spring', stiffness: 300 }}
                         >
-                          <svg className="w-7 h-7 text-black ml-1" viewBox="0 0 24 24" fill="currentColor">
+                          <svg className="w-5 h-5 text-black ml-0.5" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M8 5v14l11-7z" />
                           </svg>
                         </motion.div>
                       </div>
-
-                      {/* Role badge */}
-                      <div className="absolute top-3 left-3">
-                        <span className={`text-xs font-semibold px-2 py-1 rounded-full
-                          ${project.role === 'producer'
-                            ? 'bg-blue-600 text-white'
-                            : 'bg-amber-500 text-black'
-                          }`}>
-                          {project.role === 'producer' ? 'Producer' : 'Assoc. Producer'}
-                        </span>
-                      </div>
-
-                      {/* YouTube logo badge */}
-                      <div className="absolute top-3 right-3 opacity-80 group-hover:opacity-100 transition-opacity">
-                        <svg className="w-8 h-6" viewBox="0 0 90 20" fill="none">
-                          <rect width="90" height="20" rx="4" fill="#FF0000" />
-                          <path d="M37 5.5l5.5 4.5-5.5 4.5V5.5z" fill="white" />
-                          <text x="46" y="14.5" fill="white" fontSize="9" fontFamily="Arial" fontWeight="bold">YouTube</text>
-                        </svg>
-                      </div>
                     </div>
 
-                    {/* Card Info */}
-                    <div className="p-4 bg-neutral-900 border border-neutral-800 rounded-b-lg">
-                      <h3 className="text-white font-semibold text-sm leading-snug line-clamp-2">
-                        {project.title}
-                      </h3>
-                      <p className="text-neutral-400 text-xs mt-1">{project.productionHouse}</p>
+                    {/* Card Footer - Minimal Architecture matching image_8460a2.png */}
+                    <div className="p-4 bg-[#121212] rounded-b-xl">
+                      <div className="flex items-start gap-3">
+                        
+                        {/* Contained Interior Accent Line */}
+                        <div 
+                          className={`w-[2px] self-stretch rounded-full transition-colors duration-300
+                            ${project.role === 'producer' 
+                              ? 'bg-white' 
+                              : 'bg-neutral-700'
+                            }`}
+                        />
+                        
+                        {/* Text Frame with Layout constraints for strict single-line truncation */}
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-white font-medium text-sm truncate leading-snug font-sans">
+                            {project.title}
+                          </h3>
+                          
+                          {/* Metadata Row - Accent Tags Styled in Akira */}
+                          <p className="text-[9px] text-neutral-400 mt-1 truncate flex items-center">
+                            <span className="font-['Akira'] tracking-wide uppercase font-black">
+                              {project.role === 'producer' ? 'PRODUCER' : 'ASSOC. PRODUCER'}
+                            </span>
+                            <span className="mx-2 text-neutral-600 font-sans select-none text-xs font-normal">·</span>
+                            <span className="text-neutral-500 font-sans font-normal normal-case tracking-normal text-[11px]">
+                              {project.productionHouse || project.director}
+                            </span>
+                          </p>
+                        </div>
+
+                      </div>
                     </div>
 
                   </div>

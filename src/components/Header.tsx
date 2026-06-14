@@ -6,8 +6,6 @@ import React, { useState } from 'react';
         const navLinks = [
           { name: 'Home', path: '/' },
           { name: 'Work', path: '/work' },
-          { name: 'Services', path: '/services' },
-          { name: 'About', path: '/about' },
           { name: 'Contact', path: '/contact' },
         ];
         
