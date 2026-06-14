@@ -1,50 +1,98 @@
 import React from 'react';
-        import PageWrapper from '../components/PageWrapper';
-        import { motion } from 'framer-motion';
-        
-        const ContactPage: React.FC = () => {
-          return (
-            <PageWrapper>
-              <div className="container mx-auto px-4 py-24 md:py-32">
-                <div className="max-w-3xl mx-auto text-center">
-                  <h1 className="text-4xl md:text-6xl font-bold mb-4">Get In Touch</h1>
-                  <p className="text-lg text-light-gray mb-12">
-                    Have a project in mind or just want to say hello? I'd love to hear from you.
+import PageWrapper from '../components/PageWrapper';
+import { motion } from 'framer-motion';
+import { Instagram, Linkedin, Mail, Phone, ArrowUpRight } from 'lucide-react';
+
+const ContactPage: React.FC = () => {
+  // Array holding your dynamic contact pathways
+  const contactMethods = [
+    {
+      name: 'Instagram',
+      value: '@surya.kumar', // Replace with your handle
+      href: 'https://instagram.com/your_handle', // Replace with your link
+      icon: <Instagram className="text-pink-500" size={28} />,
+    },
+    {
+      name: 'LinkedIn',
+      value: 'Surya Kumar', 
+      href: 'https://linkedin.com/in/your_profile', 
+      icon: <Linkedin className="text-blue-500" size={28} />,
+    },
+    {
+      name: 'Email',
+      value: 'contact@example.com', 
+      href: 'mailto:contact@example.com', 
+      icon: <Mail className="text-accent-cyan" size={28} />,
+    },
+    {
+      name: 'Phone',
+      value: '+91 98765 43210', 
+      href: 'tel:+919876543210', 
+      icon: <Phone className="text-emerald-500" size={28} />,
+    },
+  ];
+
+  return (
+    <PageWrapper>
+      <div className="container mx-auto px-4 py-24 md:py-36 min-h-[85vh] flex flex-col justify-center">
+        {/* ── Header ── */}
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <motion.h1 
+            className="text-5xl md:text-7xl font-bold mb-6 tracking-tight text-white break-words"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Let's make magic
+          </motion.h1>
+          <motion.p 
+            className="text-lg md:text-xl text-neutral-400 max-w-xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Got a concept, a script, or a brand that needs sharp production execution? Reach out on any platform below.
+          </motion.p>
+        </div>
+
+        {/* ── Grid Layout for Socials & Contact Info ── */}
+        <div className="max-w-4xl mx-auto w-full grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {contactMethods.map((method, index) => (
+            <motion.a
+              key={method.name}
+              href={method.href}
+              target={method.name !== 'Email' && method.name !== 'Phone' ? '_blank' : undefined}
+              rel="noopener noreferrer"
+              className="group relative flex items-center justify-between p-6 bg-neutral-900/50 border border-neutral-800 rounded-2xl hover:bg-neutral-900 hover:border-neutral-700 transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 * index }}
+              whileHover={{ y: -4 }}
+            >
+              <div className="flex items-center gap-4 w-full mr-2">
+                <div className="p-3 bg-neutral-950 rounded-xl border border-neutral-800 group-hover:border-neutral-700 transition-colors flex-shrink-0">
+                  {method.icon}
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs uppercase tracking-widest text-neutral-500 font-semibold mb-0.5">
+                    {method.name}
+                  </p>
+                  <p className="text-white font-medium text-base md:text-lg group-hover:text-accent-cyan transition-colors truncate">
+                    {method.value}
                   </p>
                 </div>
-        
-                <motion.form 
-                  className="max-w-xl mx-auto space-y-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                >
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-light-gray mb-2">Name</label>
-                    <input type="text" id="name" className="w-full bg-gray-800 border-gray-600 rounded-md p-3 focus:ring-accent-cyan focus:border-accent-cyan" />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-light-gray mb-2">Email</label>
-                    <input type="email" id="email" className="w-full bg-gray-800 border-gray-600 rounded-md p-3 focus:ring-accent-cyan focus:border-accent-cyan" />
-                  </div>
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-light-gray mb-2">Message</label>
-                    <textarea id="message" rows={5} className="w-full bg-gray-800 border-gray-600 rounded-md p-3 focus:ring-accent-cyan focus:border-accent-cyan"></textarea>
-                  </div>
-                  <div>
-                    <button type="submit" className="w-full bg-accent-cyan text-primary font-bold py-3 px-6 rounded-md hover:bg-opacity-80 transition-colors">
-                      Send Message
-                    </button>
-                  </div>
-                </motion.form>
-        
-                <div className="text-center mt-16">
-                  <p className="text-light-gray">Email: <a href="mailto:contact@example.com" className="text-white hover:text-accent-cyan">contact@example.com</a></p>
-                  <p className="text-light-gray">Phone: <a href="tel:+1234567890" className="text-white hover:text-accent-cyan">+1 (234) 567-890</a></p>
-                </div>
               </div>
-            </PageWrapper>
-          );
-        };
-        
-        export default ContactPage;
+              
+              <ArrowUpRight 
+                size={20} 
+                className="text-neutral-600 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 flex-shrink-0" 
+              />
+            </motion.a>
+          ))}
+        </div>
+      </div>
+    </PageWrapper>
+  );
+};
+
+export default ContactPage;

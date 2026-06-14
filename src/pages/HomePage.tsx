@@ -9,15 +9,15 @@ import { projects } from './WorkPage';
 const featuredProjects = projects.filter((p) => p.role === 'producer').slice(0, 3);
 // Updated brands array with image URLs (Replace placeholders with your real asset paths)
 const brands = [
-  { name: 'Big Basket', logoUrl: '/assets/logos/bigbasket.png' },
-  { name: 'Britannia', logoUrl: '/assets/logos/britannia.png' },
-  { name: 'Flipkart', logoUrl: '/assets/logos/flipkart.png' },
-  { name: 'Xiaomi', logoUrl: '/assets/logos/mi.png' },
-  { name: 'First Club', logoUrl: '/assets/logos/firstclub.png' },
-  { name: 'Razorpay', logoUrl: '/assets/logos/razorpay.png' },
-  { name: 'BFC', logoUrl: '/assets/logos/bfc.png' },
-  { name: 'Panasonic', logoUrl: '/assets/logos/panasonic.png' },
-  { name: 'iD', logoUrl: '/assets/logos/id.png' },
+  { name: 'Big Basket', logoUrl: `${import.meta.env.BASE_URL}assets/logos/bigbasket.png` },
+  { name: 'Britannia', logoUrl: `${import.meta.env.BASE_URL}assets/logos/britannia.png` },
+  { name: 'Flipkart', logoUrl: `${import.meta.env.BASE_URL}assets/logos/flipkart.png` },
+  { name: 'Xiaomi', logoUrl: `${import.meta.env.BASE_URL}assets/logos/mi.png` },
+  { name: 'First Club', logoUrl: `${import.meta.env.BASE_URL}assets/logos/firstclub.png` },
+  { name: 'Razorpay', logoUrl: `${import.meta.env.BASE_URL}assets/logos/razorpay.png` },
+  { name: 'BFC', logoUrl: `${import.meta.env.BASE_URL}assets/logos/bfc.png` },
+  { name: 'Panasonic', logoUrl: `${import.meta.env.BASE_URL}assets/logos/panasonic.png` },
+  { name: 'iD', logoUrl: `${import.meta.env.BASE_URL}assets/logos/id.png` },
 ];
 
 // Duplicate for seamless infinite scroll

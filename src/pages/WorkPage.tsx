@@ -468,7 +468,7 @@ const WorkPage: React.FC = () => {
                           className={`w-[2px] self-stretch rounded-full transition-colors duration-300
                             ${project.role === 'producer' 
                               ? 'bg-white' 
-                              : 'bg-neutral-700'
+                              : 'bg-white'
                             }`}
                         />
                         
@@ -481,12 +481,9 @@ const WorkPage: React.FC = () => {
                           {/* Metadata Row - Accent Tags Styled in Akira */}
                           <p className="text-[9px] text-neutral-400 mt-1 truncate flex items-center">
                             <span className="font-['Akira'] tracking-wide uppercase font-black">
-                              {project.role === 'producer' ? 'PRODUCER' : 'ASSOC. PRODUCER'}
+                              {project.role === 'producer' ? 'PRODUCER' : 'ASSOCIATE PRODUCER'}
                             </span>
                             <span className="mx-2 text-neutral-600 font-sans select-none text-xs font-normal">·</span>
-                            <span className="text-neutral-500 font-sans font-normal normal-case tracking-normal text-[11px]">
-                              {project.productionHouse || project.director}
-                            </span>
                           </p>
                         </div>
 
