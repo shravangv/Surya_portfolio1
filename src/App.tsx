@@ -1,34 +1,27 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-        import { AnimatePresence } from 'framer-motion';
-        import Layout from './components/Layout';
-        import HomePage from './pages/HomePage';
-        import WorkPage from './pages/WorkPage';
-        import ContactPage from './pages/ContactPage';
-        import WorkDetailPage from './pages/WorkDetailPage';
-        
-        function App() {
-          const location = useLocation();
-        
-          return (
-            <Layout>
-              <AnimatePresence mode="wait">
-                <Routes location={location} key={location.pathname}>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/work" element={<WorkPage />} />
-                  <Route path="/work/:id" element={<WorkDetailPage />} />
-                  <Route path="/contact" element={<ContactPage />} />
-                </Routes>
-              </AnimatePresence>
-            </Layout>
-          );
-        }
-        
-        function Root() {
-            return (
-                <Router>
-                    <App />
-                </Router>
-            )
-        }
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import Layout from './components/Layout';
+import HomePage from './pages/HomePage';
+import WorkPage from './pages/WorkPage';
+import ContactPage from './pages/ContactPage';
+import WorkDetailPage from './pages/WorkDetailPage';
 
-        export default Root;
+function App() {
+  const location = useLocation();
+
+  return (
+    <Layout>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/work" element={<WorkPage />} />
+          <Route path="/work/:id" element={<WorkDetailPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+      </AnimatePresence>
+    </Layout>
+  );
+}
+
+// Exporting App directly since main.tsx handles the BrowserRouter container
+export default App;

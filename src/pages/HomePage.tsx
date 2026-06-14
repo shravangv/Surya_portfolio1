@@ -143,11 +143,12 @@ const HomePage: React.FC = () => {
           <div className="pointer-events-none absolute left-0 top-0 h-full w-24 z-10 bg-gradient-to-r from-neutral-950 to-transparent" />
           <div className="pointer-events-none absolute right-0 top-0 h-full w-24 z-10 bg-gradient-to-l from-neutral-950 to-transparent" />
 
-          <div className="flex items-center marquee-track">
+          {/* pointer-events-none added to the track to prevent clicking/dragging completely */}
+          <div className="flex items-center marquee-track pointer-events-none">
             {marqueeItems.map((brand, i) => (
               <div
                 key={i}
-                className="flex-shrink-0 mx-10 flex items-center justify-center select-none opacity-60 hover:opacity-100 transition-opacity duration-200"
+                className="flex-shrink-0 mx-10 flex items-center justify-center select-none opacity-100"
               >
                 <img
                   src={brand.logoUrl}
@@ -175,9 +176,6 @@ const HomePage: React.FC = () => {
           .marquee-track {
             animation: marquee 28s linear infinite;
             width: max-content;
-          }
-          .marquee-track:hover {
-            animation-play-state: paused;
           }
         `}</style>
       </section>
