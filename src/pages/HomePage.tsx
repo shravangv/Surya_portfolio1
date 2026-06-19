@@ -82,7 +82,7 @@ const HomePage: React.FC = () => {
             >
               <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-neutral-800">
                 <img
-                  src="https://placehold.co/600x750/1a1a1a/555555/png?text=Surya+Kumar"
+                  src={`${import.meta.env.BASE_URL}assets/logos/Surya.jpeg`}
                   alt="Surya Kumar"
                   className="w-full h-full object-cover"
                 />

@@ -66,16 +66,6 @@ export const projects = [
     dop: 'Terrence Mane',
   },
   {
-    id: 7,
-    role: 'producer' as const,
-    title: 'ID | Squeeze and Fry Vada Batter 2.0',
-    youtubeId: 'KnkXWgA7wXk',
-    producer: 'Surya Kumar, Bushra Shariff',
-    productionHouse: '',
-    director: 'Johnny Ambrose',
-    dop: 'Terrence Mane',
-  },
-  {
     id: 8,
     role: 'producer' as const,
     title: 'ID | Pour to Perfection Filter Coffee',
