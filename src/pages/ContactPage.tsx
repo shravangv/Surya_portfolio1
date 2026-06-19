@@ -20,14 +20,14 @@ const ContactPage: React.FC = () => {
     },
     {
       name: 'Email',
-      value: 'contact@example.com', 
-      href: 'mailto:contact@example.com', 
+      value: 'suryakumar.ramesh@gmail.com', 
+      href: 'mailto:suryakumar.ramesh@gmail.com', 
       icon: <Mail className="text-accent-cyan" size={28} />,
     },
     {
       name: 'Phone',
-      value: '+91 98765 43210', 
-      href: 'tel:+919876543210', 
+      value: '+91 96118 15488', 
+      href: 'tel:+919611815488', 
       icon: <Phone className="text-emerald-500" size={28} />,
     },
   ];
