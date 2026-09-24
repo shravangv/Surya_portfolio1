@@ -34,9 +34,11 @@ const HomePage: React.FC = () => {
           muted
           playsInline
           className="absolute top-0 left-0 w-full h-full object-cover"
-          poster="https://placehold.co/1920x1080/000000/FFFFFF/png?text=Loading..."
         >
-          <source src="https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4" type="video/mp4" />
+        <source
+          src="/Surya_portfolio1/videos/website-banner-surya.mp4"
+          type="video/mp4"
+        />
         </video>
         <div className="absolute inset-0 bg-black bg-opacity-55" />
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
