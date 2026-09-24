@@ -31,7 +31,6 @@ const ContactPage: React.FC = () => {
       icon: <Phone className="text-emerald-500" size={28} />,
     },
   ];
-
   return (
     <PageWrapper>
       <div className="container mx-auto px-4 py-24 md:py-36 min-h-[85vh] flex flex-col justify-center">
